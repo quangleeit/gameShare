@@ -1,0 +1,66 @@
+﻿@using GameMob.Models;
+@model List<Game>
+
+<div class="recent-add">
+    <!----sreen-gallery-cursual---->
+    <div class="sreen-gallery-cursual">
+        <!-- requried-jsfiles-for owl -->
+        <link href="~/Content/Css/owl.carousel.css" rel="stylesheet">
+        <script src="~/Scripts/Js/owl.carousel.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#owl-demo").owlCarousel({
+                    items: 1,
+                    lazyLoad: true,
+                    autoPlay: true,
+                    navigation: true,
+                    navigationText: false,
+                    pagination: true,
+                });
+            });
+        </script>
+        <!-- //requried-jsfiles-for owl -->
+        <!-- start content_slider -->
+        <div id="owl-demo" class="owl-carousel text-center">
+            <div class="item">
+                <img class="lazyOwl" src="~/IMG/Adventisment/adven1.jpg" alt="name" />
+                
+            </div>
+            <div class="item">
+                <img class="lazyOwl" src="~/IMG/Adventisment/adven2.jpg" alt="name" />
+             
+            </div>
+            <div class="item">
+                <img class="lazyOwl" src="~/IMG/Adventisment/adven3.jpg" alt="name">
+            </div>
+        </div>
+        <!--//sreen-gallery-cursual---->
+    </div>
+</div>
+<div class="clearfix"> </div>
+<!-- popular-allbums -->
+<div class="popular-albums">
+    <h2>Download nhiều nhất</h2>
+@{
+    foreach (var items in Model)
+    {
+        <div class="popular-allbum">
+            <div class="popular-allbum-pic">
+                <a href="@Url.Action("Details", "Game", new{id=items.idGame})"><img src="~/IMG/poster/@items.poster" title="@items.nameGame" /></a>
+            </div>
+            <div class="popular-allbum-info">
+                <h3><a href="@Url.Action("Details", "Game", new{id=items.idGame})">@items.nameGame</a></h3>
+                <p><strong>Năm sản xuất: </strong> @items.namSX</p>
+                <p><strong>Download: </strong> @items.luotDownLoad</p>
+                
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+
+    }
+}
+    
+   
+</div>
+<!-- popular-allbums -->

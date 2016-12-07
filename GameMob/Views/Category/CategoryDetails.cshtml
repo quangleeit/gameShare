@@ -1,0 +1,47 @@
+﻿@using GameMob.Models;
+@model List<Game>
+
+@{
+    Layout = "~/Views/MyLayout/UserLayout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+@Html.Partial("~/Views/Home/PartialCategories.cshtml")
+
+
+<div class="content">
+    <div class="container">
+        <!-- albums -->
+
+        <div class="albums">
+            <h1>Game @ViewBag.NameGen</h1>
+            <div class="album-grids">
+                @{
+                    foreach (var item in Model)
+                    {
+                        <div class="album-grid-game">
+                            <div class="album-grid-pic">
+                                <a href="@Url.Action("Details", "Game", new { id = item.idGame })"><img src="~/IMG/poster/@item.poster" title="name" /></a>
+                            </div>
+                            <div class="album-grid-info">
+                                <p><strong>@item.nameGame</strong> </p>
+                                <!--<p><strong>Country:</strong> UK,</p>
+                                <p><strong>casting:</strong> <a href="#">Donec,</a><a href="#">variu,</a><a href="#">mauris,</a><a href="#">sociis</a></p>
+                                <a class="download-album" href="#">Download</a>-->
+                            </div>
+                        </div>
+
+
+                    }
+                }
+
+
+                <div class="clearfix"> </div>
+            </div>
+            <!-- pagenate -->
+            <!-- pagenate -->
+        </div>
+        <!-- albums -->
+    </div>
+</div>
+

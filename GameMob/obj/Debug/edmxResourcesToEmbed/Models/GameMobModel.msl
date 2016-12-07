@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GameStoreDBModelStoreContainer" CdmEntityContainer="GameStoreDBEntities">
+    <EntitySetMapping Name="AccessLevels">
+      <EntityTypeMapping TypeName="GameStoreDBModel.AccessLevel">
+        <MappingFragment StoreEntitySet="AccessLevel">
+          <ScalarProperty Name="accessLevel1" ColumnName="accessLevel" />
+          <ScalarProperty Name="describeLevel" ColumnName="describeLevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="GameStoreDBModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="idAdmin" ColumnName="idAdmin" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fulname" ColumnName="Fulname" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="lastLoginDate" ColumnName="lastLoginDate" />
+          <ScalarProperty Name="accessLevel" ColumnName="accessLevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Advertisments">
+      <EntityTypeMapping TypeName="GameStoreDBModel.Advertisment">
+        <MappingFragment StoreEntitySet="Advertisment">
+          <ScalarProperty Name="idAd" ColumnName="idAd" />
+          <ScalarProperty Name="nameAd" ColumnName="nameAd" />
+          <ScalarProperty Name="imgAd" ColumnName="imgAd" />
+          <ScalarProperty Name="linkAd" ColumnName="linkAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQs">
+      <EntityTypeMapping TypeName="GameStoreDBModel.FAQ">
+        <MappingFragment StoreEntitySet="FAQs">
+          <ScalarProperty Name="idFAQ" ColumnName="idFAQ" />
+          <ScalarProperty Name="nameFAQ" ColumnName="nameFAQ" />
+          <ScalarProperty Name="describeFAQ" ColumnName="describeFAQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="GameStoreDBModel.Game">
+        <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="idGame" ColumnName="idGame" />
+          <ScalarProperty Name="nameGame" ColumnName="nameGame" />
+          <ScalarProperty Name="idSeries" ColumnName="idSeries" />
+          <ScalarProperty Name="idNhaSX" ColumnName="idNhaSX" />
+          <ScalarProperty Name="describeGame" ColumnName="describeGame" />
+          <ScalarProperty Name="linkDownload" ColumnName="linkDownload" />
+          <ScalarProperty Name="poster" ColumnName="poster" />
+          <ScalarProperty Name="namSX" ColumnName="namSX" />
+          <ScalarProperty Name="luotDownLoad" ColumnName="luotDownLoad" />
+          <ScalarProperty Name="pointOfCritic" ColumnName="pointOfCritic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genres">
+      <EntityTypeMapping TypeName="GameStoreDBModel.Genre">
+        <MappingFragment StoreEntitySet="Genre">
+          <ScalarProperty Name="idGenre" ColumnName="idGenre" />
+          <ScalarProperty Name="nameGenre" ColumnName="nameGenre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="GameStoreDBModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="idImage" ColumnName="idImage" />
+          <ScalarProperty Name="idGame" ColumnName="idGame" />
+          <ScalarProperty Name="linkImage" ColumnName="linkImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="GameStoreDBModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="idMenu" ColumnName="idMenu" />
+          <ScalarProperty Name="nameMenu" ColumnName="nameMenu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nhaSanXuats">
+      <EntityTypeMapping TypeName="GameStoreDBModel.nhaSanXuat">
+        <MappingFragment StoreEntitySet="nhaSanXuat">
+          <ScalarProperty Name="idNhaSX" ColumnName="idNhaSX" />
+          <ScalarProperty Name="nameNhaSX" ColumnName="nameNhaSX" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeriesGames">
+      <EntityTypeMapping TypeName="GameStoreDBModel.SeriesGame">
+        <MappingFragment StoreEntitySet="SeriesGame">
+          <ScalarProperty Name="idSeries" ColumnName="idSeries" />
+          <ScalarProperty Name="nameSeries" ColumnName="nameSeries" />
+          <ScalarProperty Name="imgSeries" ColumnName="imgSeries" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GameStoreDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GameInGenre" TypeName="GameStoreDBModel.GameInGenre" StoreEntitySet="GameInGenre">
+      <EndProperty Name="Game">
+        <ScalarProperty Name="idGame" ColumnName="idGame" />
+      </EndProperty>
+      <EndProperty Name="Genre">
+        <ScalarProperty Name="idGenre" ColumnName="idGenre" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

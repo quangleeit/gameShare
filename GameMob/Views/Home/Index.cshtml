@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/MyLayout/UserLayout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<!-- banner -->
+@section Home{
+<li class="active"><a href="@Url.Action("Index", "Home")">Home</a></li>
+}
+<div class="banner">
+    <!-- slider -->
+    <!--- img-slider --->
+    <div class="img-slider">
+        <!----start-slider-script---->
+        <script src="~/Scripts/Js/responsiveslides.min.js"></script>
+        <script>
+            // You can also use "$(window).load(function() {"
+            $(function () {
+                // Slideshow 4
+                $("#slider4").responsiveSlides({
+                    auto: true,
+                    pager: true,
+                    nav: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                    before: function () {
+                        $('.events').append("<li>before event fired.</li>");
+                    },
+                    after: function () {
+                        $('.events').append("<li>after event fired.</li>");
+                    }
+                });
+
+            });
+        </script>
+        <!----//End-slider-script---->
+        <!-- Slideshow 4 -->
+        @Html.Partial("~/Views/Home/PartialSlider.cshtml")
+         <!-- slider -->
+        <div class="clearfix"> </div>
+    </div> <!-- banner -->
+    <!-- categories -->
+
+    @Html.Partial("~/Views/Home/PartialCategories.cshtml")
+
+    <!-- categories -->
+    <!-- content -->
+    <div class="content">
+        <div class="container">
+            <!-- content-left -->
+            <div class="col-md-9 content-left">
+
+                @Html.Action("PartialContentLeft", "Game")
+                
+            </div>             <!-- End content-left -->
+            <!-- content-right -->
+            <div class="col-md-3 content-right">
+                @Html.Action("PartialContentRight", "Game")
+                <!-- content-right -->
+            </div>
+        </div>
+    </div>
+    <!-- content -->

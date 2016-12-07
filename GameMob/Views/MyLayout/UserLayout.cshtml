@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Game Store</title>
+    <meta charset="utf-8">
+
+    <link href="~/Content/Css/bootstrap.css" rel="stylesheet" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <script src="~/Scripts/Js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+
+    <link href="~/Content/Css/style.css" rel="stylesheet" />
+
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!----webfonts--->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700,800,400,600' rel='stylesheet' type='text/css'>
+    <!---//webfonts--->
+</head>
+<body>
+    <!-- container -->
+    <div class="header">
+        <div class="container">
+            <!-- header -->
+            <!-- logo -->
+            <div class="logo">
+                <a href="@Url.Action("Index", "Home")"><img src="~/IMG/logo.png" title="gameStore" /></a>
+            </div>
+            <!-- logo -->
+            <!-- top-nav -->
+            <div class="top-nav">
+                <span class="menu"> </span>
+                <ul>
+                    @if (IsSectionDefined("Home"))
+                    {
+                        @RenderSection("Home")
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Index", "Home")">HOME<span> </span></a></li>
+                    }
+
+                    @if (IsSectionDefined("NewGame"))
+                    {
+                        @RenderSection("NewGame")
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("NewGame", "Home")">New Game</a></li>
+                    }
+                    @*@if (IsSectionDefined("GameOnline"))
+                    {
+                        @RenderSection("GameOnline")
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("GameOnline", "Game")">Game Online</a></li>
+                    }*@
+                    @if (IsSectionDefined("News"))
+                    {
+                        @RenderSection("News")
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("News", "Home")">News</a></li>
+                    }
+
+                    @if (IsSectionDefined("GameSeries"))
+                    {
+                        @RenderSection("GameSeries")
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Index", "GameSeries")">Game Series</a></li>
+                    }
+                    @if (IsSectionDefined("FAQS"))
+                    {
+                        @RenderSection("FAQS")
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("FAQs", "Home")">FAQs</a></li>
+                    }
+                     
+                    
+                       
+                    
+                    
+                    <div class="clearfix"> </div>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <!-- top-nav -->
+            <!-- script-for-menu -->
+            <script>
+					$(document).ready(function(){
+						$("span.menu").click(function(){
+							$(".top-nav ul").slideToggle(200);
+						});
+					});
+            </script>
+            <!-- script-for-menu -->
+        </div>
+        <!-- header -->
+    </div>
+    <!-- banner -->
+    <!-- footer -->
+    @RenderBody()
+  
+    <div class="footer">
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-4">
+                    <div class="footer-grid">
+                        <h5>Giới thiệu Game Store</h5>
+                        <p>Website chia sẻ games free tốt nhất, được xây dựng từ năm 2016 với hàng ngàn game nổi tiếng đến từ Ubisoft, RockStar, EA, Konami... Không những thế chúng tôi còn cập nhật tin tức mới nhất của làng Game trong nước và thế giới. </p>
+                       
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="footer-grid site-map">
+                        <h5>Kết nối</h5>
+                        <ul>
+                            <li><a href="index.html"><span> </span>Facebook</a></li>
+                            <li><a href="404.html"><span> </span>Twitter</a></li>
+                            <li><a href="albums.html"><span> </span>Youtube</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-grid site-map">
+                        <h5>Site Map</h5>
+                        <ul>
+                            <li><a href="index.html"><span> </span>Home</a></li>
+                            <li><a href="404.html"><span> </span>New Game</a></li>
+                            <li><a href="albums.html"><span> </span>Game Online</a></li>
+                            <li><a href="404.html"><span> </span>Game Offline</a></li>
+                            <li><a href="contact.html"><span> </span>GameSeries</a></li>
+                            <li><a href="contact.html"><span> </span>FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-grid f-gallery">
+                        <h5>My Partner</h5>
+                        <div class="f-gallery-grids">
+                            <div class="f-gallery-grid">
+                                <ul>
+                                    <li><a href="#"><img src="~/IMG/Partner/partner1.jpg" title="name"></a></li>
+                                    <li><a href="#"><img src="~/IMG/Partner/partner2.jpg" title="name"></a></li>
+                                    <li><a href="#"><img src="~/IMG/Partner/partner3.jpg" title="name"></a></li>
+                                    <li><a href="#"><img src="~/IMG/Partner/partner4.jpg" title="name"></a></li>
+                                    <li><a href="#"><img src="~/IMG/Partner/partner5.jpg" title="name"></a></li>
+                                    <li><a href="#"><img src="~/IMG/Partner/partner6.jpg" title="name"></a></li>
+                                    <div class="clearfix">
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <!-- copy-right -->
+    <div class="copy-right">
+        <div class="container">
+            <p>Copy Right By Franky</a></p>
+        </div>
+    </div>
+    <!-- copy-right -->
+    <!-- container -->
+</body>
+</html>
+

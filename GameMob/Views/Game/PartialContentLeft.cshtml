@@ -1,0 +1,77 @@
+﻿@using GameMob.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Game>
+
+@{
+    int inn =0;
+    foreach (var item in Model)
+    {
+        inn ++;
+        if (inn % 2 != 0)
+        {
+            @: <div>
+        }
+                <div class="col-md-6 artical">
+                    <div class="col-md-6 artical-left">
+                        <a href="@Url.Action("Details", "Game", new{id=item.idGame})"><img src="~/IMG/poster/@item.poster" title="@item.nameGame" /></a>
+                    </div>
+                    <div class="col-md-6 artical-right">
+                        <div class="artical-head">
+                            <p><strong><a href="@Url.Action("Details", "Game", new{id= item.idGame})">@item.nameGame </a></strong></p>                            
+                        </div>
+                        <div class="clearfix"> </div>
+                        <!-- artical-info -->
+                        <div class="artical-info">
+                          
+                            
+                            <p><strong>Năm sản xuất: </strong>@item.namSX </p>
+                            <p><strong>Điểm Metecritic: </strong>@item.pointOfCritic</p>
+                            
+                            <p><strong>Thể loại: </strong><span>
+                                @for (int i = 0; i < item.Genres.Count(); i++)
+                                {
+                                    if (item.Genres.Count() < 2 || i == (item.Genres.Count() - 1))
+                                    {
+                                        <a href="@Url.Action("CategoryDetails", "Category", new {id = @item.Genres.ElementAt(i).idGenre  })">   @item.Genres.ElementAt(i).nameGenre </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("CategoryDetails", "Category", new {id = @item.Genres.ElementAt(i).idGenre  })">   @item.Genres.ElementAt(i).nameGenre </a>
+
+                                        <span>, </span>                                                                               
+                                    }
+                                        
+
+                                }</span>
+                            </p>
+                            
+                            <p><strong>Lượt download: </strong>@item.luotDownLoad</p>
+                            @*<a href="#"><span class="rate"> </span></a>*@
+                         </div>
+                        <!-- artical-info -->
+                    </div>
+                    <div class="clearfix"> </div>
+                </div> 
+    
+        if (inn % 2 == 0)
+        {
+            @: <div class="clearfix"> </div></div>
+        }
+
+
+    }
+    @*<script>
+        $(function () {
+            while ($('.artical-head p').height > ($('.artical-head').height() - 5)) {
+                $('.artical-head p').css('font-size', (parseInt($('.artical-head p').css('font-size')) - 2) + "px");
+            }
+        });
+    </script>*@
+}
+    
+    <div class="clearfix"> </div>
+    <!-- pagenate -->
+    <div>@Html.PagedListPager(Model, page => Url.Action("Index", "Home", new { page = page }))</div>
+    <!-- pagenate -->
+    
+    

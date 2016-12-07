@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "ErrorMessage";
+    Layout = "~/Views/MyLayout/UserLayout.cshtml";
+}
+
+@Html.Partial("~/Views/Home/PartialCategories.cshtml")
+
+    <!-- 404 -->
+    <div class="error-page text-center">
+        <h1>404</h1>
+        <p>Page Not found!</p>
+        <a class="home" href="@Url.Action("Index", "Home")">Back to home</a>
+    </div>
+    <!-- 404 -->
+

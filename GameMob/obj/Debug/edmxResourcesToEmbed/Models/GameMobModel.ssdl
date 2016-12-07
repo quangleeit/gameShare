@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccessLevel">
+    <Key>
+      <PropertyRef Name="accessLevel" />
+    </Key>
+    <Property Name="accessLevel" Type="int" Nullable="false" />
+    <Property Name="describeLevel" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="idAdmin" />
+    </Key>
+    <Property Name="idAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fulname" Type="nvarchar" MaxLength="50" />
+    <Property Name="createdDate" Type="datetime" />
+    <Property Name="lastLoginDate" Type="datetime" />
+    <Property Name="accessLevel" Type="int" />
+  </EntityType>
+  <EntityType Name="Advertisment">
+    <Key>
+      <PropertyRef Name="idAd" />
+    </Key>
+    <Property Name="idAd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="imgAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="linkAd" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FAQs">
+    <Key>
+      <PropertyRef Name="idFAQ" />
+    </Key>
+    <Property Name="idFAQ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameFAQ" Type="nvarchar" MaxLength="50" />
+    <Property Name="describeFAQ" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="idGame" />
+    </Key>
+    <Property Name="idGame" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameGame" Type="nvarchar" MaxLength="50" />
+    <Property Name="idSeries" Type="int" />
+    <Property Name="idNhaSX" Type="int" />
+    <Property Name="describeGame" Type="nvarchar(max)" />
+    <Property Name="linkDownload" Type="varchar" MaxLength="50" />
+    <Property Name="poster" Type="varchar" MaxLength="50" />
+    <Property Name="namSX" Type="int" />
+    <Property Name="luotDownLoad" Type="int" />
+    <Property Name="pointOfCritic" Type="float" />
+  </EntityType>
+  <EntityType Name="GameInGenre">
+    <Key>
+      <PropertyRef Name="idGenre" />
+      <PropertyRef Name="idGame" />
+    </Key>
+    <Property Name="idGenre" Type="int" Nullable="false" />
+    <Property Name="idGame" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="idGenre" />
+    </Key>
+    <Property Name="idGenre" Type="int" Nullable="false" />
+    <Property Name="nameGenre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="idImage" />
+    </Key>
+    <Property Name="idImage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idGame" Type="int" />
+    <Property Name="linkImage" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="idMenu" />
+    </Key>
+    <Property Name="idMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameMenu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="nhaSanXuat">
+    <Key>
+      <PropertyRef Name="idNhaSX" />
+    </Key>
+    <Property Name="idNhaSX" Type="int" Nullable="false" />
+    <Property Name="nameNhaSX" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SeriesGame">
+    <Key>
+      <PropertyRef Name="idSeries" />
+    </Key>
+    <Property Name="idSeries" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameSeries" Type="nvarchar" MaxLength="50" />
+    <Property Name="imgSeries" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Admin_AccessLevel">
+    <End Role="AccessLevel" Type="Self.AccessLevel" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessLevel">
+        <PropertyRef Name="accessLevel" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="accessLevel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Game_nhaSanXuat">
+    <End Role="nhaSanXuat" Type="Self.nhaSanXuat" Multiplicity="0..1" />
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhaSanXuat">
+        <PropertyRef Name="idNhaSX" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="idNhaSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Game_SeriesGame">
+    <End Role="SeriesGame" Type="Self.SeriesGame" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeriesGame">
+        <PropertyRef Name="idSeries" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="idSeries" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameInGenre_Game">
+    <End Role="Game" Type="Self.Game" Multiplicity="1" />
+    <End Role="GameInGenre" Type="Self.GameInGenre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="idGame" />
+      </Principal>
+      <Dependent Role="GameInGenre">
+        <PropertyRef Name="idGame" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameInGenre_Genre">
+    <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+    <End Role="GameInGenre" Type="Self.GameInGenre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="idGenre" />
+      </Principal>
+      <Dependent Role="GameInGenre">
+        <PropertyRef Name="idGenre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GameStoreDBModelStoreContainer">
+    <EntitySet Name="AccessLevel" EntityType="Self.AccessLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Advertisment" EntityType="Self.Advertisment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FAQs" EntityType="Self.FAQs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GameInGenre" EntityType="Self.GameInGenre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nhaSanXuat" EntityType="Self.nhaSanXuat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SeriesGame" EntityType="Self.SeriesGame" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Admin_AccessLevel" Association="Self.FK_Admin_AccessLevel">
+      <End Role="AccessLevel" EntitySet="AccessLevel" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Game_nhaSanXuat" Association="Self.FK_Game_nhaSanXuat">
+      <End Role="nhaSanXuat" EntitySet="nhaSanXuat" />
+      <End Role="Game" EntitySet="Game" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Game_SeriesGame" Association="Self.FK_Game_SeriesGame">
+      <End Role="SeriesGame" EntitySet="SeriesGame" />
+      <End Role="Game" EntitySet="Game" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameInGenre_Game" Association="Self.FK_GameInGenre_Game">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GameInGenre" EntitySet="GameInGenre" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameInGenre_Genre" Association="Self.FK_GameInGenre_Genre">
+      <End Role="Genre" EntitySet="Genre" />
+      <End Role="GameInGenre" EntitySet="GameInGenre" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

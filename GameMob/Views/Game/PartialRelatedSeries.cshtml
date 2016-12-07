@@ -1,0 +1,47 @@
+﻿@using GameMob.Models;
+@model List<Game>
+
+<div class="related-articals">
+    <h2>Game cùng series</h2>
+    <!-- related-albums -->
+    <div class="related-albums">
+        <script>
+							    $(document).ready(function() {
+							      $("#owl-demo1").owlCarousel({
+							        items : 3,
+							        lazyLoad : true,
+							        autoPlay : true,
+							        navigation : true,
+							        navigationText :  false,
+							        pagination : true,
+							      });
+							    });
+        </script>
+        <div id="owl-demo1" class="owl-carousel text-center">
+            @{
+                foreach (var item in Model)
+                {
+                    if (@item.idGame == @ViewBag.ID) { }
+                    else
+                    {
+                        <div class="item">
+                            <div class="r-album">
+                                <div class="r-album-pic">
+                                    <a href="@Url.Action("Details", "Game", new { id = item.idGame })"><img src="~/IMG/poster/@item.poster" title="name" /></a>
+                                </div>
+                                <div class="r-album-info">
+                                    <p><strong>@item.nameGame</strong> </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                }
+            }
+         
+            
+        </div>
+
+    </div>
+    <!-- related-albums -->
+</div>

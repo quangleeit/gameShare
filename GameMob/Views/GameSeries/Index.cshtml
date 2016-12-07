@@ -1,0 +1,49 @@
+﻿@using GameMob.Models;
+
+@using PagedList.Mvc;
+@model PagedList.PagedList<SeriesGame>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MyLayout/UserLayout.cshtml";
+}
+
+@Html.Partial("~/Views/Home/PartialCategories.cshtml")
+@section GameSeries{
+    <li class="active"><a href="@Url.Action("Index", "GameSeries")">Game Series</a></li>
+}
+
+<div class="content">
+    <div class="container">
+        <!-- albums -->
+        <div class="albums">
+            <h1>All Series</h1>
+            <div class="album-grids">
+            @{
+                foreach(var item in Model){
+                    <div class="album-grid">
+                        <div class="album-grid-pic">
+                            <a href="@Url.Action("Details", "GameSeries", new { id = item.idSeries })"><img src="~/IMG/imgSeries/@item.imgSeries" title="name" /></a>   
+                        </div>
+                        <div class="album-grid-info">
+                            <p><strong>@item.nameSeries Series</strong> </p>
+                            <!--<p><strong>Country:</strong> UK,</p>
+                            <p><strong>casting:</strong> <a href="#">Donec,</a><a href="#">variu,</a><a href="#">mauris,</a><a href="#">sociis</a></p>
+                            <a class="download-album" href="#">Download</a>-->
+                        </div>
+                    </div>
+                    
+
+                }
+}    
+                
+                
+                <div class="clearfix"> </div>
+            </div>
+            <!-- pagenate -->
+            <div>@Html.PagedListPager(Model, page => Url.Action("Index", "GameSeries", new { page = page }))</div>
+            <!-- pagenate -->
+        </div>
+        <!-- albums -->
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@model GameMob.Models.Game
+@{
+    Layout = "~/Views/MyLayout/UserLayout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+@Html.Partial("~/Views/Home/PartialCategories.cshtml")
+
+<!-- content -->
+<div class="content">
+    <div class="container">
+        <!-- content-left -->
+        <div class="col-md-9 content-left">
+            <!-- artical-single-page -->
+            <div class="artical-details">
+                <h2><a href="#">@Html.DisplayFor(model => model.nameGame)</a></h2>
+                <!-- artical-details-info -->
+                <div class="artical-details-info">
+                    <div class="artical-details-info-left">
+                        <a href="#"><img src="~/IMG/poster/@Html.DisplayFor(model => model.poster)" title="name" /></a>
+                    </div>
+                    <div class="artical-details-info-right">
+                        <p><strong>Năm phát hành: </strong>@Html.DisplayFor(model => model.namSX)</p>
+                        <p><strong>Điểm Metacritic: </strong>@Html.DisplayFor(model => model.pointOfCritic)</p>
+                        <p>
+                            <strong>Thể loại: </strong><span>
+                                @for (int i = 0; i < Model.Genres.Count(); i++)
+                                {
+                                    if (Model.Genres.Count() < 2 || i == (Model.Genres.Count() - 1))
+                                    {
+                                        <a href="@Url.Action("CategoryDetails", "Category", new { id = @Model.Genres.ElementAt(i).idGenre })">   @Model.Genres.ElementAt(i).nameGenre </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("CategoryDetails", "Category", new { id = @Model.Genres.ElementAt(i).idGenre })">   @Model.Genres.ElementAt(i).nameGenre </a>
+                                        <span>, </span>
+                                    }
+
+
+                                }
+                            </span>
+                        </p>
+
+                        <p><strong>Nhà sản xuất: </strong>@Html.DisplayFor(model => model.nhaSanXuat.nameNhaSX)</p>
+                        <p><strong>singer: </strong> adipiscing,</p>
+                        <p><strong>casting:</strong> <a href="#">Donec,</a><a href="#">variu,</a><a href="#">mauris,</a><a href="#">sociis,</a></p>
+                        <div class="dicription">
+                            <p><strong>Mô tả:</strong>Cras quis eros eget sem vestibulum malesuada ac nec lectus. Sed sodales ultricies varius. Nullam eu lorem ac justo vestibulum tincidunt. Vivamus id erat sit amet sapien vulputate faucibus sed quis ex.</p>
+                        </div>
+                        <a class="download" href="#">Download</a>
+                    </div>
+                    <div class="clearfix"> </div>
+
+                </div>
+                <!-- artical-details-info -->
+            </div>
+            <!-- related-articals -->
+@{
+    if (@ViewBag.idSeries == 0) { }
+    else {
+    @Html.Action("PartialRelatedSeries", "Game", new { id = Model.idSeries })
+
+    }
+
+}            
+            
+            <h1>@ViewBag.ID</h1>
+            <!-- related-articals -->
+            <!-- artical-single-page -->
+            <div class="clearfix"> </div>
+        </div>
+        <!-- content-left -->
+        <!-- content-right -->
+        <div class="col-md-3 content-right">
+                @Html.Action("PartialContentRight", "Game")
+        </div>
+        <!-- content-right -->
+    </div>
+</div>
+<!-- content -->

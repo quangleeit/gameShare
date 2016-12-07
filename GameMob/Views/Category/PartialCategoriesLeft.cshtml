@@ -1,0 +1,15 @@
+﻿@using GameMob.Models;
+@model List<Genre>
+
+<div><ul class="options">
+    @{
+        foreach (var items in Model)
+        {
+            <li><a href="@Url.Action("CategoryDetails", "Category", new { id = @items.idGenre })">@items.nameGenre</a></li>
+        }
+    }
+</ul>
+</div>
+    
+
+

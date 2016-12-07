@@ -1,0 +1,23 @@
+﻿<div class="categories c-cate">
+    <div class="container">
+        
+
+        @Html.Action("PartialCategoriesLeft", "Category")
+     
+
+
+
+
+        <div class="categories-right">
+            @using (Html.BeginForm("SearchResult", "Search", FormMethod.Get))
+            {
+                @Html.TextBox("searchString", "", htmlAttributes: new { @class = "textBoxSearch", @placeholder = "Search here"})
+                <input type="submit" value="search" />
+            }
+                        
+                
+            
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

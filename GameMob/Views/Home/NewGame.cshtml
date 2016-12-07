@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/MyLayout/UserLayout.cshtml";
+    ViewBag.Title = "New Game";
+}
+
+
+@section NewGame{
+    <li class="active"><a href="@Url.Action("NewGame", "Home")">New Game</a></li>
+}
+
+@Html.Partial("~/Views/Home/PartialCategories.cshtml")
+<!-- categories -->
+<!-- content -->
+
+<div class="content">
+    <div class="container">
+
+
+        <!-- content-left -->
+
+        <div class="col-md-9 content-left">
+            <div class="albums">
+                <h1>Game Mới</h1>
+            </div>
+
+                @Html.Action("PartialNewGame", "Game")
+                <div class="clearfix"> </div>
+                <!-- pagenate -->
+                <!-- pagenate -->
+            </div>             <!-- End content-left -->
+        <!-- content-right -->
+        <div class="col-md-3 content-right">
+            @Html.Action("PartialContentRight", "Game")
+            <!-- content-right -->
+        </div>
+    </div>
+</div>
+<!-- content -->
